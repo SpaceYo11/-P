@@ -1,0 +1,71 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+int main()
+{
+    string s,s1,res,k;
+    cin >> s >> s1;
+    int t = 0,temp = 0,sr;
+    if(s.size()==s1.size()){
+       for(int i = s.size() - 1; i >= 0; --i){
+          t = s[i] + s1[i] - 96 + temp;
+          if(t > 9){
+            res.push_back(t%10);
+            temp = t / 10;
+          }
+          else{
+            res.push_back(t);
+            temp = 0;
+       }
+       }
+        if(temp)
+                res.push_back(temp);
+    }
+    else
+        if(s.size() > s1.size()){
+            sr = s.size() - s1.size();
+            for(int j = 0; j < sr; ++j)
+                k+='0';
+            k+=s1;  s1.clear();  s1+=k;
+            for(int i = s.size() - 1; i >= 0; --i){
+              t = s[i] + s1[i] - 96 + temp;
+              if(t > 9){
+                res.push_back(t%10);
+                temp = t / 10;
+              }
+              else{
+                res.push_back(t);
+                temp = 0;
+           }
+           }
+            if(temp)
+                    res.push_back(temp);
+        }
+    else
+        if(s.size() < s1.size()){
+            sr = s1.size() - s.size();
+            for(int j = 0; j < sr; ++j)
+                k+='0';
+            k+=s;  s.clear();  s+=k;
+            for(int i = s.size() - 1; i >= 0; --i){
+              t = s[i] + s1[i] - 96 + temp;
+              if(t > 9){
+                res.push_back(t%10);
+                temp = t / 10;
+              }
+              else{
+                res.push_back(t);
+                temp = 0;
+           }
+           }
+            if(temp)
+                    res.push_back(temp);
+ 
+        }
+    for(int i = res.size() - 1; i >= 0; --i){
+            res[i]= res[i] + 48;
+            cout << res[i];
+    }
+    return 0;
+}
